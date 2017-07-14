@@ -11,12 +11,13 @@ train_filepath = data_path + 'pheno_emaize.txt'
 train_X = []
 with open(train_filepath, 'r') as f:
     line = f.readline()
+    line = f.readline() 
     splited_line = line.split('\t')
     while splited_line[0] == 'training':
         train_X.append( list( map( lambda x: float(x), splited_line[3:6]) ) )
         line = f.readline()
         splited_line = line.split('\t')
-
+print(train_X[0])
 test_X = []
 with open(result_filepath, 'r') as f:
     line = f.readline()
