@@ -17,15 +17,15 @@ with open(train_filepath, 'r') as f:
         train_X.append( list( map( lambda x: float(x), splited_line[3:6]) ) )
         line = f.readline()
         splited_line = line.split('\t')
-print(train_X[0])
+
 test_X = []
 with open(result_filepath, 'r') as f:
     line = f.readline()
     while line:
         test_X.append( list( map( lambda x: float(x), line.split(' ')) ) )
         line = f.readline()
-
-cluster = KMeans(n_clusters=3, random_state=170)
+# kmeans cluster
+cluster = KMeans(n_clusters=2, random_state=170)
 y_pred = cluster.fit_predict(train_X)
 y_test = cluster.predict(test_X)
 
