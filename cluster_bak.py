@@ -31,9 +31,7 @@ y_test = cluster.predict(test_X)
 
 # allomerative clustering
 ac_cluster = AC(n_clusters=2)
-t_ac = train_X[:]
-t_ac.extend(test_X)
-y_pred_ac = ac_cluster.fit_predict(t_ac)
+#y_pred_ac = ac_cluster.fit_predict(train_X.extend(test_X))
 # y_test_ac = ac_cluster.predict(test_X)
 
 def write_result(filename, test_set, predict_set):
@@ -46,5 +44,5 @@ def write_result(filename, test_set, predict_set):
 	    for y in predict_set:
 	        f.write( '\t'.join(['L%04d'%(i),str(y)+'\n']))
 	        i += 1
-write_result("result.txt", y_pred, y_test)
-write_result("result_ac.txt", y_pred_ac, [])
+#write_result("result.txt", y_pred, y_test)
+#write_result("result_ac.txt", y_pred_ac, [])
