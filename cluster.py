@@ -2,6 +2,7 @@
 
 from sklearn.cluster import KMeans 
 from sklearn.cluster import AgglomerativeClustering as AC
+from sklearn.cluster import MeanShift
 data_path = 'data/'
 
 result_filepath = data_path + 'result.txt'
@@ -36,6 +37,10 @@ t_ac.extend(test_X)
 y_pred_ac = ac_cluster.fit_predict(t_ac)
 # y_test_ac = ac_cluster.predict(test_X)
 
+# MeanShift clustering
+ms_cluster = MeanShift()
+y_pred_ms = ms_cluster.fit_predict(t_ac)
+
 def write_result(filename, test_set, predict_set):
 	with open(filename, 'w') as f:
 	    i = 1
@@ -48,3 +53,4 @@ def write_result(filename, test_set, predict_set):
 	        i += 1
 write_result("result.txt", y_pred, y_test)
 write_result("result_ac.txt", y_pred_ac, [])
+write_result("result_ms.txt", y_pred_ms, [])
